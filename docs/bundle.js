@@ -108,6 +108,7 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(() => {
       if (xhr.status >= 200 && xhr.status < 300) {
         let wordResponse = JSON.parse(xhr.response);
         alert(wordResponse["message"])
+        getTopWords()
       }
       else {
         alert('something went wrong');
@@ -137,10 +138,10 @@ function getTopWords() {
 };
 
 function renderTopWords(topWordData) {
+  let wordbox = document.querySelector("#word-box")
   let topWord = Object.keys(topWordData.word)[0]
   let count = topWordData.word[topWord]
-  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#word-box').append(`Top Word: "${topWord}", <br>`)
-  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#word-box').append(`Count: ${count}`)
+  wordbox.innerHTML = `Top Word: "${topWord}", <br> Count: ${count}`
 };
 
 
